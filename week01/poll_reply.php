@@ -34,7 +34,8 @@
             border-collapse: collapse;
         }
 
-        th, td {
+        th,
+        td {
             padding: 10px;
             text-align: left;
             border: 1px solid #ddd;
@@ -64,27 +65,30 @@
             </tr>
             <tr>
                 <td>이름</td>
-                <td><?php echo htmlspecialchars($_POST['sname']); ?></td>
+                <td><?php echo $_POST['sname']; ?></td>
             </tr>
             <tr>
                 <td>학번</td>
-                <td><?php echo htmlspecialchars($_POST['snum']); ?></td>
+                <td><?php echo $_POST['snum']; ?></td>
             </tr>
             <tr>
                 <td>학과이름(전공)</td>
-                <td><?php echo htmlspecialchars($_POST['sdept']); ?></td>
+                <td><?php echo $_POST['sdept']; ?></td>
             </tr>
             <tr>
                 <td>1. 나는 프로그래밍에 대해 자신이 있다.</td>
-                <td><?php echo htmlspecialchars($_POST['poll01']); ?></td>
+                <td><?php echo $_POST['poll01'] == 'on' ? 'yes' : ''; ?></td>
+
             </tr>
             <tr>
                 <td>2. 게임이 만들어지는 과정에 대해 이해가 있다.</td>
-                <td><?php echo htmlspecialchars($_POST['poll02']); ?></td>
+                <td><?php echo $_POST['poll02'] == 'on' ? 'yes' : ''; ?></td>
+
             </tr>
             <tr>
                 <td>3. 게임을 만들어 본 경험이 있다.</td>
-                <td><?php echo htmlspecialchars($_POST['poll03']); ?></td>
+                <td><?php echo $_POST['poll03'] == 'on' ? 'yes' : ''; ?></td>
+
             </tr>
             <tr>
                 <td>프로그래밍 동아리 가입 시 가장 중요하게 생각하는 부분</td>
@@ -97,7 +101,7 @@
                         if (isset($_POST['poll10D'])) $selectedOptions[] = "이벤트";
                         if (isset($_POST['poll10E'])) $selectedOptions[] = "게임 만들기";
                         if (isset($_POST['poll10F'])) $selectedOptions[] = "공모전 참여";
-                        if (isset($_POST['poll10G'])) $selectedOptions[] = "기타: " . htmlspecialchars($_POST['poll10H']);
+                        if (isset($_POST['poll10G'])) $selectedOptions[] = "기타: " . $_POST['poll10H'];
                         echo implode(", ", $selectedOptions);
                     ?>
                 </td>
@@ -110,7 +114,7 @@
                         if (isset($_POST['poll20A'])) $programmingLanguages[] = "C언어(C,C++,C#)";
                         if (isset($_POST['poll20B'])) $programmingLanguages[] = "파이썬";
                         if (isset($_POST['poll20C'])) $programmingLanguages[] = "자바";
-                        if (isset($_POST['poll20D'])) $programmingLanguages[] = "기타: " . htmlspecialchars($_POST['poll20H']);
+                        if (isset($_POST['poll20D'])) $programmingLanguages[] = "기타: " . $_POST['poll20H'];
                         echo implode(", ", $programmingLanguages);
                     ?>
                 </td>
@@ -123,7 +127,7 @@
                         if (isset($_POST['poll30A'])) $gameTypes[] = "RPG게임";
                         if (isset($_POST['poll30B'])) $gameTypes[] = "AOS게임";
                         if (isset($_POST['poll30C'])) $gameTypes[] = "FPS게임";
-                        if (isset($_POST['poll30D'])) $gameTypes[] = "기타: " . htmlspecialchars($_POST['poll30H']);
+                        if (isset($_POST['poll30D'])) $gameTypes[] = "기타: " . $_POST['poll30H'];
                         echo implode(", ", $gameTypes);
                     ?>
                 </td>
@@ -137,18 +141,39 @@
                         if (isset($_POST['poll40B'])) $gameEngines[] = "언리얼";
                         if (isset($_POST['poll40C'])) $gameEngines[] = "소스엔진";
                         if (isset($_POST['poll40D'])) $gameEngines[] = "주피터";
-                        if (isset($_POST['poll40E'])) $gameEngines[] = "기타: " . htmlspecialchars($_POST['poll40E']);
+                        if (isset($_POST['poll40E'])) $gameEngines[] = "기타: " . $_POST['poll40E'];
                         echo implode(", ", $gameEngines);
                     ?>
                 </td>
             </tr>
             <tr>
                 <td>같은 팀 희망 멤버</td>
-                <td><?php echo htmlspecialchars($_POST['poll50']); ?></td>
+                <td><?php echo $_POST['poll50']; ?></td>
             </tr>
             <tr>
                 <td>희망하는 멘토</td>
-                <td><?php echo htmlspecialchars($_POST['poll60']); ?></td>
+                <td>
+                    <?php 
+                        $mentor = "";
+                        switch($_POST['poll60']) {
+                            case 'poll60A':
+                                $mentor = "신재현";
+                                break;
+                            case 'poll60B':
+                                $mentor = "구아름";
+                                break;
+                            case 'poll60C':
+                                $mentor = "윤서진";
+                                break;
+                            case 'poll60D':
+                                $mentor = "김준혁";
+                                break;
+                            default:
+                                $mentor = "선택 안함";
+                        }
+                        echo $mentor;
+                    ?>
+                </td>
             </tr>
         </table>
 
