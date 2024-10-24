@@ -37,7 +37,7 @@ foreach ($subject as $s) $avg[$s] = (int) ($avg[$s] / $n);
 
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
-                ['과목', '평균', '범수']
+                ['과목', '평균', '점수']
                 <?php
                 foreach ($data[$sn] as $k => $v) {
                     echo ",['" . $k . "', ";
