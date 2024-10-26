@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <link rel="StyleSheet" href="./table.css" type="text/css" />
-<?php include("./data.php"); ?>
+<?php include("./data2.php"); ?>
 
 <?php
 function makeTimeTableStudent($data, $grade)

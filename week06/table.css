@@ -6,10 +6,16 @@ table {
     margin: 20px 0px 20px 0px;
 }
 
+table tr td:first-child {
+    background-color: #ffffe0;
+}
+
 table,
 th,
 td {
     border: 1px solid gray;
+    font-weight: normal;
+    text-align: center;
 }
 
 td,
@@ -29,4 +35,13 @@ th {
     border: 1px solid lightgray;
     padding: 10px;
     /*  margin: 10px;*/
+}
+
+.footer {
+    border : 1px solid gray;
+    padding : 10px;
+    font-weight: bold;
+    text-align: center;
+    background: linear-gradient(45deg, #e66465, #9198e5);
+
 }
