@@ -39,7 +39,7 @@ function makeTimeTableStudent($data, $grade)
     $str .= "<td>{$t}교시<br>" . $time[$t] . "</td>";
 
     for ($d = 1; $d < 6; $d++) { //$t시간의 $d 요일
-      if ($spanCount[$d] > 0) {
+      if ($spanCount[$d] > 0) { //$d요일의 span카운트가 1보다 크면 다음 요일로 넘어감(2시간 연강같은 경우 span카운트 증가)
         $spanCount[$d]--;
         continue;
       }
