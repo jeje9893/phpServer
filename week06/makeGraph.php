@@ -11,10 +11,20 @@ $subject = array('국어', '영어', '수학', '과학', '역사');
 ?>
 <?php
 $avg = array();
+$min = array();
+$max = array();
 $n = count($data);
-foreach ($subject as $s) $avg[$s] = 0;
+foreach ($subject as $s) {
+    $avg[$s] = 0;
+    $min[$s] = 100;
+    $max[$s] = 0;
+}
 foreach ($data as $d) {
-    foreach ($d as $k => $v) $avg[$k] += $v;
+    foreach ($d as $k => $v) {
+        $avg[$k] += $v;
+        if ($v <= $min[$k]) $min[$k] = $v;
+        if ($v >= $max[$k]) $max[$k] = $v;
+    }
 }
 foreach ($subject as $s) $avg[$s] = (int) ($avg[$s] / $n);
 ?>
@@ -37,11 +47,13 @@ foreach ($subject as $s) $avg[$s] = (int) ($avg[$s] / $n);
 
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
-                ['과목', '평균', '점수']
+                ['과목', '최소점수', '평균', '최대점수', '점수']
                 <?php
                 foreach ($data[$sn] as $k => $v) {
                     echo ",['" . $k . "', ";
+                    echo $min[$k] . ", ";
                     echo $avg[$k] . ", ";
+                    echo $max[$k] . ", ";
                     echo $v . "]" . "\n";
                 }
                 ?>
